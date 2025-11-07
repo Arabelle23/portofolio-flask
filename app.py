@@ -59,6 +59,7 @@ def admin():
                            total_users=total_users, total_skills=total_skills, total_projects=total_projects)
 
 
+@app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('portfolio'))
@@ -236,3 +237,4 @@ def delete_project(project_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
