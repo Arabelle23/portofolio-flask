@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        a { text-decoration: none; color: white; }
+        .btn { background-color: #007BFF; color: white; padding: 10px 15px; margin: 5px; display: inline-block; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Halo, {{ username }}! </h1>
+    <p>Selamat datang di dashboard admin.</p>
+
+    <h2>Menu Admin</h2>
+    <div>
+        <a class="btn" href="{{ url_for('manage_users') }}">Kelola Users</a>
+        <a class="btn" href="{{ url_for('manage_skills') }}">Kelola Skills</a>
+        <a class="btn" href="{{ url_for('manage_projects') }}">Kelola Projects</a>
+        <a class="btn" href="{{ url_for('logout') }}" style="background-color: #DC3545;">Logout</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hikmal Akbar Baihaqi | Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 2rem;
+        }
+
+        .profile, .about, .skills, .projects {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            margin: 1rem;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0.5rem 0;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li img {
+            margin-right: 8px;
+        }
+
+        .projects li {
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .projects li img {
+            margin: 0.5rem 0;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .projects li a {
+            color: #fff;
+            text-decoration: underline;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        .about p {
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .login-btn {
+            display: block;
+            width: 200px;
+            margin: 2rem auto;
+            padding: 10px;
+            background: white;
+            color: #1e3a8a;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hikmal Akbar Baihaqi | Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <div class="profile">
+            <img src="static/admin.jpg" alt="Profile Photo">
+            <h2>Hikmal Akbar Baihaqi</h2>
+            <p>Hidup Itu Ujian Kalo Susah Ada AI</p>
+        </div>
+
+        <div class="about">
+            <h2>About Me</h2>
+            <p>
+                Halo! Saya Hikmal Akbar Baihaqi, saya seorang mahasiswa semester 3 informatika. Saat ini saya sedang menjalankan perkuliahan di Universitas Teknologi Yogyakarta. Saya berasal dari kota Cilacap. Project portofolio ini saya buat dalam rangka responsi matakuliah pemograman web mobile praktek.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="skills">
+            <h2>Skills</h2>
+            <ul>
+                {% for skill in skills %}
+                <li>
+                    {% if skill[3] %}
+                    <img src="{{ url_for('static', filename='icons/' ~ skill[3]) }}" width="24" alt="icon">
+                    {% endif %}
+                    <span>{{ skill[1] }} - {{ skill[2] }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="projects">
+            <h2>Projects</h2>
+            <ul>
+                {% for project in projects %}
+                <li>
+                    <strong>{{ project[1] }}</strong>
+                    <p>{{ project[2] }}</p>
+                    {% if project[3] %}
+                    <img src="static/projek.png" alt="{{ project[1] }}">
+                    {% endif %}
+                    {% if project[4] %}
+                    <a href="{{ project[4] }}" target="_blank">Lihat Project</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a href="/login" class="login-btn"> Login Admin</a>
+
+    <footer>
+        © 2025 Hikmal Akbar Baihaqi — Portofolio Flask & Database
+    </footer>
+</body>
+</html>

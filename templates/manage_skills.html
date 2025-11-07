@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Manage Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f4f4f4; }
+    table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+    th { background: #007bff; color: #fff; }
+    a { padding: 5px 10px; text-decoration: none; border-radius: 4px; }
+    .edit { background: #ffc107; color: #fff; }
+    .edit:hover { background: #e0a800; }
+    .delete { background: #dc3545; color: #fff; }
+    .delete:hover { background: #c82333; }
+    .add { background: #28a745; color: #fff; margin-bottom: 20px; display: inline-block; }
+    .add:hover { background: #218838; }
+    .back { background: #6c757d; color: #fff; margin-bottom: 20px; display: inline-block; padding: 5px 10px; border-radius: 4px; text-decoration: none; }
+    .back:hover { background: #5a6268; }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="{{ url_for('admin') }}"><i class="fa fa-arrow-left"></i> Kembali ke Dashboard</a>
+  <a class="add" href="{{ url_for('add_skill') }}"><i class="fa fa-plus"></i> Tambah Skill Baru</a>
+
+  <h2>Daftar Skill</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama Skill</th>
+        <th>Level</th>
+        <th>Icon</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for skill in skills %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ skill[1] }}</td>
+        <td>{{ skill[2] }}</td>
+        <td><i class="{{ skill[3] }}"></i> {{ skill[3] }}</td>
+        <td>
+          <a class="edit" href="{{ url_for('edit_skill', skill_id=skill[0]) }}"><i class="fa fa-edit"></i> Edit</a>
+          <a class="delete" href="{{ url_for('delete_skill', skill_id=skill[0]) }}" onclick="return confirm('Yakin ingin menghapus skill ini?');"><i class="fa fa-trash"></i> Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>

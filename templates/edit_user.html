@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit User</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+    h2 { color: #333; }
+    form { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 400px; }
+    input { padding: 8px; width: 100%; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ccc; }
+    button { padding: 8px 15px; border: none; background: #ffc107; color: #fff; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #e0a800; }
+    .back { background: #6c757d; color: #fff; margin-bottom: 20px; display: inline-block; padding: 5px 10px; border-radius: 4px; text-decoration: none; }
+    .back:hover { background: #5a6268; }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="{{ url_for('manage_users') }}"><i class="fa fa-arrow-left"></i> Kembali ke Daftar User</a>
+
+  <h2>Edit User</h2>
+  <form method="POST" action="{{ url_for('edit_user', user_id=user[0]) }}">
+    <input type="text" name="username" placeholder="Username" value="{{ user[1] }}" required>
+    <input type="password" name="password" placeholder="Password" value="{{ user[2] }}" required>
+    <input type="text" name="name" placeholder="Nama Lengkap" value="{{ user[3] }}" required>
+    <input type="text" name="bio" placeholder="Bio" value="{{ user[4] }}">
+    <input type="text" name="foto" placeholder="URL Foto" value="{{ user[5] }}">
+    <button type="submit"><i class="fa fa-save"></i> Simpan Perubahan</button>
+  </form>
+
+</body>
+</html>

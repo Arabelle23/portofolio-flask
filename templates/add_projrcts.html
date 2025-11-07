@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tambah Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f4f4f4;
+    }
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #28a745;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .back {
+      background: #6c757d;
+      color: #fff;
+      margin-bottom: 20px;
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    .back:hover {
+      background: #5a6268;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="{{ url_for('manage_projects') }}">
+    <i class="fa fa-arrow-left"></i> Kembali ke Daftar Project
+  </a>
+
+  <h2>Tambah Project Baru</h2>
+  <form method="POST" action="{{ url_for('add_project') }}">
+    <input type="number" name="id" placeholder="ID Project" required>
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="text" name="image" placeholder="Image URL">
+    <input type="text" name="link" placeholder="Project Link">
+    <button type="submit">Simpan Project</button>
+  </form>
+
+</body>
+</html>

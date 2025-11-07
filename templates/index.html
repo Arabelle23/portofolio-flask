@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Dashboard Admin</title>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h2>Selamat datang, {{ username }} 👋</h2>
+    <p>Anda berhasil login ke halaman admin.</p>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger mt-3">Logout</a>
+</div>
+{% endblock %}
